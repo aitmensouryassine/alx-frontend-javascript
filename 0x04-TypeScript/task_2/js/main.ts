@@ -1,3 +1,4 @@
+// TASK 5
 interface DirectorInterface {
 	workFromHome: () => string;
 	getCoffeeBreak: () => string;
@@ -41,6 +42,14 @@ function createEmployee(salary: number | string): DirectorInterface | TeacherInt
 	return new Director();
 }
 
-console.log(createEmployee(200));
-console.log(createEmployee(1000));
-console.log(createEmployee("$500"));
+// TASK 6
+function isDirector(employee: DirectorInterface | TeacherInterface): employee is DirectorInterface {
+	return employee instanceof Director;
+}
+function executeWork(employee: DirectorInterface | TeacherInterface) {
+	if (isDirector(employee)) {
+		console.log(employee.workDirectorTasks());
+	} else {
+		console.log(employee.workTeacherTasks());
+	}
+}
